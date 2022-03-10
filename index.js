@@ -1,10 +1,10 @@
 const { BlobServiceClient, StorageSharedKeyCredential } = require("@azure/storage-blob");
 
-const storageName = ''
+const storageName = 'mystorageke'
 
 const defaultAzureCredential = new StorageSharedKeyCredential(
   storageName,  // isim
-  ''   // access key
+  'jKzFhI6iqD5s4pqsg3seceeO7ymegqt1aLupQOWI8yb/XxYE/GX8MtD0uaMK3emOD6AEGvGleTc8+AStd41ojw=='   // access key
 )
      
 const blobServiceClient = new BlobServiceClient(
@@ -12,12 +12,16 @@ const blobServiceClient = new BlobServiceClient(
   defaultAzureCredential
 );
 
-const containerClient = blobServiceClient.getContainerClient('files');
+const containerClient = blobServiceClient.getContainerClient('images');
 
 const blobName = "item_" + new Date().getTime() + '.png';
 const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
-blockBlobClient.uploadFile('blob.png')
+blockBlobClient.uploadFile('blob.png', {
+  blobHTTPHeaders: {
+    blobContentType: 'image/png'
+  }
+})
 .then((response) => {
     console.log(response)
 
