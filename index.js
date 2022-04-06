@@ -4,7 +4,7 @@ const storageName = ''
 
 const defaultAzureCredential = new StorageSharedKeyCredential(
   storageName,  // isim
-  'jKzFhI6iqD5s4pqsg3seceeO7ymegqt1aLupQOWI8yb/XxYE/GX8MtD0uaMK3emOD6AEGvGleTc8+AStd41ojw=='   // access key
+  ''   // access key
 )
      
 const blobServiceClient = new BlobServiceClient(
